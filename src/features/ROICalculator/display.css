@@ -1,0 +1,27 @@
+.display-wrapper {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    padding: 0 5%;
+}
+
+.header-wrapper span {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.header-wrapper {
+    display: flex;
+    text-align: center;
+    margin-top: 25%;
+}
+
+.calculations-wrapper {
+    margin-top: 25%;
+}
+
+.calculations-wrapper p {
+    font-size: 28px;
+    font-weight: bold;
+}

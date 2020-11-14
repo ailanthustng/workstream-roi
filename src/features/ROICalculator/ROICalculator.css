@@ -1,0 +1,58 @@
+.roi-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 5% 0;
+}
+
+.header-wrapper span {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.header-wrapper {
+    display: flex;
+    text-align: center;
+}
+
+.row-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.row-wrapper h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.row-wrapper p {
+    margin-bottom: 0;
+}
+
+.row-wrapper h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #457cff;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ant-slider-dot {
+    border: solid 2px #457cff !important;
+}
+
+.ant-slider-handle {
+    border: solid 2px #457cff !important;
+}
+
