@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Typography, Slider, InputNumber } from 'antd';
+import { Row, Col, Slider, InputNumber } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setHires,
@@ -20,10 +20,12 @@ import {
 import './ROICalculator.css'
 import marks from './sliderMarks'
 
-const { Title } = Typography;
-
 const ROICalculator = () => {
   const dispatch = useDispatch();
+
+  /*
+   * Selects the required states from the store.
+   */
   const hires = useSelector(selectHires)
   const candidates = useSelector(selectCandidates)
   const interviews = useSelector(selectInterviews)
@@ -32,8 +34,36 @@ const ROICalculator = () => {
   const days = useSelector(selectDays)
   const costs = useSelector(selectCosts)
 
+  /*
+   * These methods are to prevent input values (for InputNumber) to be larger than the max.
+   */
+  const handleHiresInput = (value) => {
+    value > 1000 ? dispatch(setHires(1000)) : dispatch(setHires(value))
+  }
+  const handleCandidatesInput = (value) => {
+    value > 20 ? dispatch(setCandidates(20)) : dispatch(setCandidates(value))
+  }
+  const handleInterviewsInput = (value) => {
+    value > 50 ? dispatch(setInterviews(50)) : dispatch(setInterviews(value))
+  }
+  const handleNoShowsInput = (value) => {
+    value > 100 ? dispatch(setNoShows(100)) : dispatch(setNoShows(value))
+  }
+  const handleOnboardingInput = (value) => {
+    value > 50 ? dispatch(setOnboarding(50)) : dispatch(setOnboarding(value))
+  }
+  const handleDaysInput = (value) => {
+    value > 100 ? dispatch(setDays(100)) : dispatch(setDays(value))
+  }
+  const handleCostsInput = (value) => {
+    value > 80 ? dispatch(setCosts(100)) : dispatch(setCosts(value))
+  }
+
   return (
     <Row className="roi-wrapper">
+      <Row className="row-wrapper">
+        <h1>Input your values here:</h1>
+      </Row>
       <Row className="row-wrapper">
         <Col span={7}>
           <h1>New Hires</h1>
@@ -48,7 +78,7 @@ const ROICalculator = () => {
             min={0}
             max={1000}
             value={hires}
-            onChange={value => {dispatch(setHires(value))}}
+            onChange={value => handleHiresInput(value)}
           />
         </Col>
       </Row>
@@ -66,7 +96,7 @@ const ROICalculator = () => {
             min={0}
             max={20}
             value={candidates}
-            onChange={value => {dispatch(setCandidates(value))}}
+            onChange={value => handleCandidatesInput(value)}
           />
         </Col>
       </Row>
@@ -84,7 +114,7 @@ const ROICalculator = () => {
             min={0}
             max={50}
             value={interviews}
-            onChange={value => {dispatch(setInterviews(value))}}
+            onChange={value => handleInterviewsInput(value)}
           />
         </Col>
       </Row>
@@ -102,7 +132,7 @@ const ROICalculator = () => {
             min={0}
             max={100}
             value={noShows}
-            onChange={value => {dispatch(setNoShows(value))}}
+            onChange={value => handleNoShowsInput(value)}
           />
         </Col>
       </Row>
@@ -120,7 +150,7 @@ const ROICalculator = () => {
             min={0}
             max={50}
             value={onboarding}
-            onChange={value => {dispatch(setOnboarding(value))}}
+            onChange={value => handleOnboardingInput(value)}
           />
         </Col>
       </Row>
@@ -138,7 +168,7 @@ const ROICalculator = () => {
             min={0}
             max={100}
             value={days}
-            onChange={value => {dispatch(setDays(value))}}
+            onChange={value => handleDaysInput(value)}
           />
         </Col>
       </Row>
@@ -156,7 +186,7 @@ const ROICalculator = () => {
             min={0}
             max={80}
             value={costs}
-            onChange={value => {dispatch(setCosts(value))}}
+            onChange={value => handleCostsInput(value)}
           />
         </Col>
       </Row>

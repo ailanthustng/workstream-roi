@@ -6,8 +6,8 @@
     padding: 0 5%;
 }
 
-.header-wrapper span {
-    font-size: 30px;
+.header-wrapper h1 {
+    font-size: 32px;
     font-weight: 700;
 }
 
@@ -17,11 +17,20 @@
     margin-top: 25%;
 }
 
+.subheader-wrapper span {
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .calculations-wrapper {
-    margin-top: 25%;
+    margin-top: 18%;
+}
+
+.calculations-wrapper h1 {
+    font-weight: bold;
 }
 
 .calculations-wrapper p {
     font-size: 28px;
-    font-weight: bold;
+    color: #457cff;
 }
