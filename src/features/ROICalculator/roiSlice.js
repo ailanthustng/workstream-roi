@@ -12,7 +12,7 @@ export const roiSlice = createSlice({
     costs: 20,
   },
   /*
-   * Reducers basically take in the new values from the action.payload and mutates the state values to the new values.
+   * Reducers take in the new values from the action.payload and mutates the state values to the new values.
    */
   reducers: {
     setHires: (state, action) => {

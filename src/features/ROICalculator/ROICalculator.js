@@ -26,37 +26,37 @@ const ROICalculator = () => {
   /*
    * Selects the required states from the store.
    */
-  const hires = useSelector(selectHires)
-  const candidates = useSelector(selectCandidates)
-  const interviews = useSelector(selectInterviews)
-  const noShows = useSelector(selectNoShows)
-  const onboarding = useSelector(selectOnboarding)
-  const days = useSelector(selectDays)
-  const costs = useSelector(selectCosts)
+  const hires = useSelector(selectHires);
+  const candidates = useSelector(selectCandidates);
+  const interviews = useSelector(selectInterviews);
+  const noShows = useSelector(selectNoShows);
+  const onboarding = useSelector(selectOnboarding);
+  const days = useSelector(selectDays);
+  const costs = useSelector(selectCosts);
 
   /*
    * These methods are to prevent input values (for InputNumber) to be larger than the max.
    */
   const handleHiresInput = (value) => {
-    value > 1000 ? dispatch(setHires(1000)) : dispatch(setHires(value))
+    value > 1000 ? dispatch(setHires(1000)) : dispatch(setHires(value));
   }
   const handleCandidatesInput = (value) => {
-    value > 20 ? dispatch(setCandidates(20)) : dispatch(setCandidates(value))
+    value > 20 ? dispatch(setCandidates(20)) : dispatch(setCandidates(value));
   }
   const handleInterviewsInput = (value) => {
-    value > 50 ? dispatch(setInterviews(50)) : dispatch(setInterviews(value))
+    value > 50 ? dispatch(setInterviews(50)) : dispatch(setInterviews(value));
   }
   const handleNoShowsInput = (value) => {
-    value > 100 ? dispatch(setNoShows(100)) : dispatch(setNoShows(value))
+    value > 100 ? dispatch(setNoShows(100)) : dispatch(setNoShows(value));
   }
   const handleOnboardingInput = (value) => {
-    value > 50 ? dispatch(setOnboarding(50)) : dispatch(setOnboarding(value))
+    value > 50 ? dispatch(setOnboarding(50)) : dispatch(setOnboarding(value));
   }
   const handleDaysInput = (value) => {
-    value > 100 ? dispatch(setDays(100)) : dispatch(setDays(value))
+    value > 100 ? dispatch(setDays(100)) : dispatch(setDays(value));
   }
   const handleCostsInput = (value) => {
-    value > 80 ? dispatch(setCosts(100)) : dispatch(setCosts(value))
+    value > 80 ? dispatch(setCosts(100)) : dispatch(setCosts(value));
   }
 
   return (

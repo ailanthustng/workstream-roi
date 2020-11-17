@@ -14,13 +14,13 @@ import './display.css'
 
 
 const Display = () => {
-  const hires = useSelector(selectHires)
-  const candidates = useSelector(selectCandidates)
-  const interviews = useSelector(selectInterviews)
-  const noShows = useSelector(selectNoShows)
-  const onboarding = useSelector(selectOnboarding)
-  const days = useSelector(selectDays)
-  const costs = useSelector(selectCosts)
+  const hires = useSelector(selectHires);
+  const candidates = useSelector(selectCandidates);
+  const interviews = useSelector(selectInterviews);
+  const noShows = useSelector(selectNoShows);
+  const onboarding = useSelector(selectOnboarding);
+  const days = useSelector(selectDays);
+  const costs = useSelector(selectCosts);
 
   /*
    * Functions to calculate the various results based on the formulas provided.
