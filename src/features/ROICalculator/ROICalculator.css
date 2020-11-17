@@ -7,6 +7,13 @@
     padding: 4% 0;
 }
 
+.open-arrow-wrapper {
+    position: absolute;
+    left: 5%;
+    top: 3%;
+    z-index: 99;
+}
+
 .header-wrapper span {
     font-size: 30px;
     font-weight: 700;
@@ -22,7 +29,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 2em;
+    margin: 0 2% 2em 2%;
 }
 
 .row-wrapper h1 {

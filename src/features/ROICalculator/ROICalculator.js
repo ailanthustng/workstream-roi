@@ -1,5 +1,9 @@
 import React from 'react';
-import { Row, Col, Slider, InputNumber } from 'antd';
+import { Row, Col, Slider, InputNumber, Button } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import {
+  isMobileOnly,
+} from "react-device-detect";
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setHires,
@@ -20,7 +24,7 @@ import {
 import './ROICalculator.css'
 import marks from './sliderMarks'
 
-const ROICalculator = () => {
+const ROICalculator = ({collapsed, setCollapsed}) => {
   const dispatch = useDispatch();
 
   /*
@@ -61,19 +65,31 @@ const ROICalculator = () => {
 
   return (
     <Row className="roi-wrapper">
+      {/* Shows only if is a mobile device and is collapsed */}
+      {isMobileOnly && collapsed ?
+        <Row className="open-arrow-wrapper">
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<RightOutlined />}
+            size="large"
+            onClick={() => setCollapsed(false)}
+          />
+        </Row>
+        : "" }
       <Row className="row-wrapper">
         <h1>Input your values here:</h1>
       </Row>
       <Row className="row-wrapper">
-        <Col span={7}>
+        <Col span={7} xs={7}>
           <h1>New Hires</h1>
           <p>How many hires do you make per year?</p>
           <h2>{hires ? hires : 0}</h2>
         </Col>
-        <Col span={13}>
+        <Col span={13} xs={13}>
           <Slider min={0} max={1000} marks={marks.hiresMark} onChange={value => dispatch(setHires(value))} value={hires} />
         </Col>
-        <Col span={2} style={{paddingLeft: "20px"}}>
+        <Col span={2} xs={3} style={{paddingLeft: "20px"}}>
           <InputNumber
             min={0}
             max={1000}
@@ -83,15 +99,15 @@ const ROICalculator = () => {
         </Col>
       </Row>
       <Row className="row-wrapper">
-        <Col span={7}>
+        <Col span={7} xs={7}>
           <h1>Sourcing Candidates</h1>
           <p>How many hours do you spend per candidate?</p>
           <h2>{candidates ? candidates : 0}</h2>
         </Col>
-        <Col span={13}>
+        <Col span={13} xs={13}>
           <Slider min={0} max={20} marks={marks.candidateMark} onChange={value => dispatch(setCandidates(value))} value={candidates} />
         </Col>
-        <Col span={2} style={{paddingLeft: "20px"}}>
+        <Col span={2} xs={3} style={{paddingLeft: "20px"}}>
           <InputNumber
             min={0}
             max={20}
@@ -101,15 +117,15 @@ const ROICalculator = () => {
         </Col>
       </Row>
       <Row className="row-wrapper">
-        <Col span={7}>
+        <Col span={7} xs={7}>
           <h1>Scheduling Interviews</h1>
           <p>How many hours do you spend per candidate?</p>
           <h2>{interviews ? interviews : 0}</h2>
         </Col>
-        <Col span={13}>
+        <Col span={13} xs={13}>
           <Slider min={0} max={50} marks={marks.interviewMark} onChange={value => dispatch(setInterviews(value))} value={interviews} />
         </Col>
-        <Col span={2} style={{paddingLeft: "20px"}}>
+        <Col span={2} xs={3} style={{paddingLeft: "20px"}}>
           <InputNumber
             min={0}
             max={50}
@@ -119,15 +135,15 @@ const ROICalculator = () => {
         </Col>
       </Row>
       <Row className="row-wrapper">
-        <Col span={7}>
+        <Col span={7} xs={7}>
           <h1>Reducing No-Shows</h1>
           <p>What percent don't show up?</p>
           <h2>{noShows ? noShows : 0}</h2>
         </Col>
-        <Col span={13}>
+        <Col span={13} xs={13}>
           <Slider min={0} max={100} marks={marks.noShowMark} onChange={value => dispatch(setNoShows(value))} value={noShows} />
         </Col>
-        <Col span={2} style={{paddingLeft: "20px"}}>
+        <Col span={2} xs={3} style={{paddingLeft: "20px"}}>
           <InputNumber
             min={0}
             max={100}
@@ -137,15 +153,15 @@ const ROICalculator = () => {
         </Col>
       </Row>
       <Row className="row-wrapper">
-        <Col span={7}>
+        <Col span={7} xs={7}>
           <h1>Onboarding</h1>
           <p>How many hours do you spend on onboarding?</p>
           <h2>{onboarding ? onboarding : 0}</h2>
         </Col>
-        <Col span={13}>
+        <Col span={13} xs={13}>
           <Slider min={0} max={50} marks={marks.onboardingMark} onChange={value => dispatch(setOnboarding(value))} value={onboarding} />
         </Col>
-        <Col span={2} style={{paddingLeft: "20px"}}>
+        <Col span={2} xs={3} style={{paddingLeft: "20px"}}>
           <InputNumber
             min={0}
             max={50}
@@ -155,15 +171,15 @@ const ROICalculator = () => {
         </Col>
       </Row>
       <Row className="row-wrapper">
-        <Col span={7}>
+        <Col span={7} xs={7}>
           <h1>Days to Hire</h1>
           <p>How many days does it take to fill a role?</p>
           <h2>{days ? days : 0}</h2>
         </Col>
-        <Col span={13}>
+        <Col span={13} xs={13}>
           <Slider min={0} max={100} marks={marks.daysMark} onChange={value => dispatch(setDays(value))} value={days} />
         </Col>
-        <Col span={2} style={{paddingLeft: "20px"}}>
+        <Col span={2} xs={3} style={{paddingLeft: "20px"}}>
           <InputNumber
             min={0}
             max={100}
@@ -173,15 +189,15 @@ const ROICalculator = () => {
         </Col>
       </Row>
       <Row className="row-wrapper">
-        <Col span={7}>
+        <Col span={7} xs={7}>
           <h1>Costs</h1>
           <p>How much do you pay your hiring managers per hour?</p>
           <h2>{costs ? costs : 0}</h2>
         </Col>
-        <Col span={13}>
+        <Col span={13} xs={13}>
           <Slider min={0} max={80} marks={marks.costsMark} onChange={value => dispatch(setCosts(value))} value={costs} />
         </Col>
-        <Col span={2} style={{paddingLeft: "20px"}}>
+        <Col span={2} xs={3} style={{paddingLeft: "20px"}}>
           <InputNumber
             min={0}
             max={80}

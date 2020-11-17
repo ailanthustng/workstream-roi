@@ -1,6 +1,10 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
+import {
+  isMobileOnly
+} from "react-device-detect";
 import {
   selectHires,
   selectCandidates,
@@ -13,7 +17,7 @@ import {
 import './display.css'
 
 
-const Display = () => {
+const Display = ({setCollapsed, collapsed}) => {
   const hires = useSelector(selectHires);
   const candidates = useSelector(selectCandidates);
   const interviews = useSelector(selectInterviews);
@@ -39,19 +43,38 @@ const Display = () => {
 
   return (
     <Row className="display-wrapper">
-      <Row>
-        <Col span={24} className="header-wrapper">
-          <h1>Workstream ROI Calculator</h1>
-        </Col>
-        <Col span={24} className="subheader-wrapper">
-          <span>Here's what you can expect with Workstream:</span>
-        </Col>
-      </Row>
-      <Col className="calculations-wrapper">
-        <h1>Annual savings of: <p>${calculateAnnualSavings()}</p></h1>
-        <h1>Your no-show rate goes down to: <p>{calculateNoShowRate()}%</p></h1>
-        <h1>New average days it takes to fill an open role: <p>{calculateAvgDays()} days</p></h1>
-      </Col>
+      {/* Shows only if is a mobile device and is not collapsed */}
+      {isMobileOnly && !collapsed ?
+        <Row className="arrow-wrapper">
+          <h4>Tap on the arrow to access inputs!</h4>
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<RightOutlined rotate={collapsed ? 0 : 180}/>}
+            size="large"
+            onClick={() => setCollapsed(true)}
+          />
+        </Row>
+      : "" }
+      {/* Hides the content when collapsed so that transition looks smoother. */}
+      {!collapsed ?
+        <>
+          <Row>
+            <Col span={24} className={`header-wrapper ${isMobileOnly ? "header-wrapper-mobile" : ""}`}>
+              <h1>Workstream ROI Calculator</h1>
+            </Col>
+            <Col span={24} className="subheader-wrapper">
+              <span>Here's what you can expect with Workstream:</span>
+            </Col>
+          </Row>
+          <Col className="calculations-wrapper">
+            <h1>Annual savings of: <p>${calculateAnnualSavings()}</p></h1>
+            <h1>Your no-show rate goes down to: <p>{calculateNoShowRate()}%</p></h1>
+            <h1>New average days it takes to fill an open role: <p>{calculateAvgDays()} days</p></h1>
+          </Col>
+        </>
+        : ""
+      }
     </Row>
   )
 }

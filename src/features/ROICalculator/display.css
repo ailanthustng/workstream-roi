@@ -1,3 +1,18 @@
+.arrow-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 5%;
+    width: 100%;
+}
+
+.arrow-wrapper h4 {
+    margin: 0;
+    padding-right: 10px;
+    color: gray;
+}
+
+
 .display-wrapper {
     align-items: center;
     justify-content: center;
@@ -15,6 +30,10 @@
     display: flex;
     text-align: center;
     margin-top: 25%;
+}
+
+.header-wrapper-mobile {
+    margin-top: 10%;
 }
 
 .subheader-wrapper span {
